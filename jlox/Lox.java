@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Lox {
+    
     public static void main(String[] args) {
         if (args.length > 1) {
             System.out.println("Usage: jlox [script]");
@@ -30,6 +31,9 @@ public class Lox {
     private static void runFile(String path) throws IOException {
         byte[] bytes = Files.readAllBytes(Paths.get(path));
         run(new String(bytes, Charset.defaultCharset()));
+
+        // Indicate an error in the exit code
+        if (hadError) System.exit(65);
     }
 
     /**
@@ -47,6 +51,7 @@ public class Lox {
             // Then, readLine returns null, so we break
             if (line == null) break;
             run(line);
+            hadError = false;
         }
     }
 
@@ -85,4 +90,10 @@ public class Lox {
         );
         hadError = true;
     }
+
+    /**
+     * Here are all my member variables
+     */
+    static boolean hadError = false; // What do you think this means?
+
 }
