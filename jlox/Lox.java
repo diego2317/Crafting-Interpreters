@@ -1,5 +1,5 @@
 package jlox;
-
+// package com.craftinginterpreters.lox;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -45,6 +45,7 @@ public class Lox {
         BufferedReader reader = new BufferedReader(input);
 
         // What the hell does ;; do
+        // It means just loop forever until we break
         for (;;) {
             System.out.println("> ");
             String line = reader.readLine(); // If we want to kill app, type Control-D
